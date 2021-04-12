@@ -1,3 +1,4 @@
+![172292223_2868659836613985_7683349924126516518_n](https://user-images.githubusercontent.com/19408476/114359825-a748a680-9b74-11eb-9d19-a11ab314d66d.png)
 Lidar zbudowany w podstawie o liniowe źródło światła umożliwający w jednym skanie uzyskanie obrazu 3D.
 
 Cele:
