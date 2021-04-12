@@ -1,5 +1,5 @@
 
-Lidar zbudowany w podstawie o liniowe źródło światła umożliwający w jednym skanie uzyskanie obrazu 3D. W czasie trwania skanu kamera będzie wykonywać zdjęcia terenu, na który nałożona zostanie linia czerwonego lasera. W drodze obróbki oprogramowaniem zostanie ona wyizolowana ze zdjęcia oraz na podstawie jej ułożenia zostanie utworzona mapa terenu w danym miejscu. Rezultatem przeprowadzonego skanu będzie mapa głębokości przedstawiona graficznie w skali szarości.
+Celem projektu jest budowa skanera typu "lidar" skonstruowanego w oparciu o liniowe źródło światła, umożliwający w jednym skanie uzyskanie obrazu 3D. W czasie trwania skanu kamera będzie wykonywać zdjęcia terenu, na który nałożona zostanie linia czerwonego lasera. W drodze obróbki oprogramowaniem zostanie ona wyizolowana ze zdjęcia oraz na podstawie jej ułożenia zostanie utworzona mapa terenu w danym miejscu. Rezultatem przeprowadzonego skanu będzie mapa głębokości przedstawiona graficznie w skali szarości.
 
 Cele:
 *  Skanowac wycinek 90* 
