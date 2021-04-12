@@ -1,3 +1,5 @@
+Lidar zbudowany w podstawie o liniowe źródło światła umożliwający w jednym skanie uzyskanie obrazu 3D.
+
 Cele:
 *  Skanowac wycinek 90* 
 *  wyjście mapa glębokosci grayscale 
