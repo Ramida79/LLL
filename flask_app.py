@@ -13,10 +13,10 @@ import os
 app = Flask(__name__)
 
 
-SQLALCHEMY_DATABASE_URI = "mysql+myslconnector://{username}:{password}@h{hostname}/{databasename}".format(
+SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://{username}:{password}@{hostname}/{databasename}".format(
     username="juzegk",
-    password="7914",
-    hostname="juzeg.mysql.pythonanywhere-services.com",
+    password="ipzhaslo",
+    hostname="juzegk.mysql.pythonanywhere-services.com",
     databasename="juzegk$IPZ"
 )
 
