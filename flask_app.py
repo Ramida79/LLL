@@ -14,7 +14,7 @@ app = Flask(__name__)
 
 
 SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://{username}:{password}@{hostname}/{databasename}".format(
-    username="juzekg",
+        username="juzeg",
     password="ipzhaslo",
     hostname="localhost",
     databasename="IPZ",
@@ -69,5 +69,6 @@ def get():
 
 #run server
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0')
+
 
