@@ -15,28 +15,52 @@ app = Flask(__name__)
 
 SQLALCHEMY_DATABASE_URI = "mysql+myslconnector://{username}:{password}@h{hostname}/{databasename}".format(
     username="juzegk",
-    Password="7914",
+    password="7914",
     hostname="juzeg.mysql.pythonanywhere-services.com",
     databasename="juzegk$IPZ"
 )
-
-db = SQLAlchemy(app)
-ma = Marshmallow(app)
-
 
 
 app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
 app.config["SQlALCHEMY_POOL_RECYCLE"] = 299 
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
+
+
+
+db = SQLAlchemy(app)
+ma = Marshmallow(app)
+
+
+
 class Skan(db.Model):
     __tablename__ = "skan"
     nazwa = db.Column(db.Text)
-    skan =  db.Column(db.Integer(11))
+    skan =  db.Column(db.Integer)
 
     def __init__(self,nazwa,skan):
         self.nazwa = nazwa
         self.skan = skan
+
+class ProductSchema(ma.Schema):
+    class Meta:
+        fields = ('nazwa','skan')
+
+skan_schema = SkanSchema(strict=True)
+skany_schema = SkanSchema(many = True, strict = True)
+
+@app.route('/skan',methods=['POST'])
+def POST_skan():
+    nazwa = request.json['nazwa']
+    skan = request.json['skan']
+
+    new_skan = Skan(nazwa , skan)
+
+    db.session.add(new_skan)
+    db.session.commit()
+
+    return skan_schema.jsonify(new_skan)
+
 
 @app.route('/', methods=['GET'])
 def get():
