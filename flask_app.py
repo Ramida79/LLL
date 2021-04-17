@@ -29,10 +29,14 @@ app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
 app.config["SQlALCHEMY_POOL_RECYCLE"] = 299 
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-db = SQLAlchemy(app)
+class Skan(db.Model):
+    __tablename__ = "skan"
+    nazwa = db.Column(db.Text)
+    skan =  db.Column(db.Integer(11))
 
-
-
+    def __init__(self,nazwa,skan):
+        self.nazwa = nazwa
+        self.skan = skan
 
 @app.route('/', methods=['GET'])
 def get():
