@@ -7,8 +7,32 @@ from flask_marshmallow import Marshmallow
 import os
 
 
+
+
  #init app
 app = Flask(__name__)
+
+
+SQLALCHEMY_DATABASE_URI = "mysql+myslconnector://{username}:{password}@h{hostname}/{databasename}".format(
+    username="juzegk",
+    Password="7914",
+    hostname="juzeg.mysql.pythonanywhere-services.com",
+    databasename="juzegk$IPZ"
+)
+
+db = SQLAlchemy(app)
+ma = Marshmallow(app)
+
+
+
+app.config["SQLALCHEMY_DATABASE_URI"] = SQLALCHEMY_DATABASE_URI
+app.config["SQlALCHEMY_POOL_RECYCLE"] = 299 
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+db = SQLAlchemy(app)
+
+
+
 
 @app.route('/', methods=['GET'])
 def get():
