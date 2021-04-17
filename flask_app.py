@@ -35,6 +35,7 @@ ma = Marshmallow(app)
 
 class Skan(db.Model):
     __tablename__ = "skan"
+    id = db.Column(db.Integer,primary_key=True)
     nazwa = db.Column(db.Text)
     skan =  db.Column(db.Integer)
 
@@ -42,12 +43,12 @@ class Skan(db.Model):
         self.nazwa = nazwa
         self.skan = skan
 
-class ProductSchema(ma.Schema):
+class SkanSchema(ma.Schema):
     class Meta:
-        fields = ('nazwa','skan')
+        fields = ('id','nazwa','skan')
 
-skan_schema = SkanSchema(strict=True)
-skany_schema = SkanSchema(many = True, strict = True)
+skan_schema = SkanSchema()
+skany_schema = SkanSchema(many = True)
 
 @app.route('/skan',methods=['POST'])
 def POST_skan():
