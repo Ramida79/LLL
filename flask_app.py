@@ -14,10 +14,11 @@ app = Flask(__name__)
 
 
 SQLALCHEMY_DATABASE_URI = "mysql+mysqlconnector://{username}:{password}@{hostname}/{databasename}".format(
-    username="juzegk",
+    username="juzekg",
     password="ipzhaslo",
-    hostname="juzegk.mysql.pythonanywhere-services.com",
-    databasename="juzegk$IPZ"
+    hostname="localhost",
+    databasename="IPZ",
+    auth_plugin='mysql_native_password'
 )
 
 
@@ -33,34 +34,33 @@ ma = Marshmallow(app)
 
 
 
-class Skan(db.Model):
-    __tablename__ = "skan"
-    id = db.Column(db.Integer,primary_key=True)
+class Skaner(db.Model):
+    __tablename__ = "skaner"
     nazwa = db.Column(db.Text)
     skan =  db.Column(db.Integer)
-
+    id = db.Column(db.Integer, primary_key=True)
     def __init__(self,nazwa,skan):
         self.nazwa = nazwa
         self.skan = skan
 
-class SkanSchema(ma.Schema):
+class SkanerSchema(ma.Schema):
     class Meta:
-        fields = ('id','nazwa','skan')
+        fields = ('nazwa','skan','id')
 
-skan_schema = SkanSchema()
-skany_schema = SkanSchema(many = True)
+skaner_schema = SkanerSchema()
+skanery_schema = SkanerSchema(many = True)
 
 @app.route('/skan',methods=['POST'])
-def POST_skan():
+def POST_skaner():
     nazwa = request.json['nazwa']
     skan = request.json['skan']
 
-    new_skan = Skan(nazwa , skan)
+    new_skaner = Skaner(nazwa , skan)
 
-    db.session.add(new_skan)
+    db.session.add(new_skaner)
     db.session.commit()
 
-    return skan_schema.jsonify(new_skan)
+    return skaner_schema.jsonify(new_skaner)
 
 
 @app.route('/', methods=['GET'])
