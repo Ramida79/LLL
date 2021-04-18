@@ -1,9 +1,11 @@
-#!/usr/bin/python3
+#!python3
 
 
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
+from flask_bootstrap import Bootstrap
+
 import os
 
 
@@ -31,7 +33,7 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db = SQLAlchemy(app)
 ma = Marshmallow(app)
-
+bootstrap = Bootstrap(app)
 
 
 class Skaner(db.Model):
@@ -63,9 +65,11 @@ def POST_skaner():
     return skaner_schema.jsonify(new_skaner)
 
 
-@app.route('/', methods=['GET'])
-def get():
-    return jsonify({'msg':'Hello there!'})
+@app.route('/')
+def basicTemplate():
+    all_skanery = Skaner.query.all()
+    result = skanery_schema.dump(all_skanery)
+    return render_template('basic-template.html',title ='noweskany',skanery = result )
 
 #run server
 if __name__ == '__main__':

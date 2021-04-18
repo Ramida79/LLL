@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title> {{ title }} </title>
+	</head>
+	<body>
+		<h1> stuff here </h1>
+		{% if skanery %}
+		{% for skaner in skanery %}
+		<div><p>ID: {{skaner.id}} {{skaner.nazwa}} zrobil skan numer: <b>{{skaner.skan}}</b></p></div>
+		{% endfor %}
+		{% else %}
+		<div><p> Zrób nowe skany </p> </div>
+		{% endif %}
+	</body>
+<html>
+
